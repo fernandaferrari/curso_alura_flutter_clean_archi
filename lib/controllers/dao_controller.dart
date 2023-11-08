@@ -11,20 +11,17 @@ class DaoController implements DaoWorkFlow {
   }
 
   @override
-  Future<void> deleteEntry({required Entry entry}) {
-    // TODO: implement deleteEntry
-    throw UnimplementedError();
+  Future<void> deleteEntry({required Entry entry}) async {
+    await createDataBase().then((dao) => dao.removeEntry(entry));
   }
 
   @override
-  Future<List<Entry>> getSaveEntries() {
-    // TODO: implement getSaveEntries
-    throw UnimplementedError();
+  Future<List<Entry>> getSavedEntries() async {
+    return await createDataBase().then((dao) => dao.getAllEntries());
   }
 
   @override
-  Future<void> saveEntry({required Entry entry}) {
-    // TODO: implement saveEntry
-    throw UnimplementedError();
+  Future<void> saveEntry({required Entry entry}) async {
+    await createDataBase().then((dao) => dao.addEntry(entry));
   }
 }
