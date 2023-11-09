@@ -107,7 +107,7 @@ class _$EntryDAO extends EntryDAO {
         _entryInsertionAdapter = InsertionAdapter(
             database,
             'Entry',
-            (Entry item) => <String, Object?>{
+            (EntryModel item) => <String, Object?>{
                   'id': item.id,
                   'name': item.name,
                   'image': item.image,
@@ -119,7 +119,7 @@ class _$EntryDAO extends EntryDAO {
             database,
             'Entry',
             ['id'],
-            (Entry item) => <String, Object?>{
+            (EntryModel item) => <String, Object?>{
                   'id': item.id,
                   'name': item.name,
                   'image': item.image,
@@ -134,14 +134,14 @@ class _$EntryDAO extends EntryDAO {
 
   final QueryAdapter _queryAdapter;
 
-  final InsertionAdapter<Entry> _entryInsertionAdapter;
+  final InsertionAdapter<EntryModel> _entryInsertionAdapter;
 
-  final DeletionAdapter<Entry> _entryDeletionAdapter;
+  final DeletionAdapter<EntryModel> _entryDeletionAdapter;
 
   @override
-  Future<List<Entry>> getAllEntries() async {
+  Future<List<EntryModel>> getAllEntries() async {
     return _queryAdapter.queryList('SELECT * FROM ENTRY',
-        mapper: (Map<String, Object?> row) => Entry(
+        mapper: (Map<String, Object?> row) => EntryModel(
             id: row['id'] as int,
             name: row['name'] as String,
             image: row['image'] as String,
@@ -151,12 +151,12 @@ class _$EntryDAO extends EntryDAO {
   }
 
   @override
-  Future<void> addEntry(Entry entry) async {
+  Future<void> addEntry(EntryModel entry) async {
     await _entryInsertionAdapter.insert(entry, OnConflictStrategy.replace);
   }
 
   @override
-  Future<void> removeEntry(Entry entry) async {
+  Future<void> removeEntry(EntryModel entry) async {
     await _entryDeletionAdapter.delete(entry);
   }
 }

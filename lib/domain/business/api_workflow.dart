@@ -1,5 +1,5 @@
-import 'package:hyrule/domain/models/entry.dart';
+import 'package:hyrule/domain/models/entry_model.dart';
 
 abstract class ApiWorkFlow {
-  Future<List<Entry>> getEntriesByCategory({required String category});
+  Future<List<EntryModel>> getEntriesByCategory({required String category});
 }

@@ -1,7 +1,7 @@
 import 'package:hyrule/domain/business/dao_workflow.dart';
 import 'package:hyrule/domain/data/dao/database.dart';
 import 'package:hyrule/domain/data/dao/entry_dao.dart';
-import 'package:hyrule/domain/models/entry.dart';
+import 'package:hyrule/domain/models/entry_model.dart';
 
 class DaoController implements DaoWorkFlow {
   Future<EntryDAO> createDataBase() async {
@@ -11,17 +11,17 @@ class DaoController implements DaoWorkFlow {
   }
 
   @override
-  Future<void> deleteEntry({required Entry entry}) async {
+  Future<void> deleteEntry({required EntryModel entry}) async {
     await createDataBase().then((dao) => dao.removeEntry(entry));
   }
 
   @override
-  Future<List<Entry>> getSavedEntries() async {
+  Future<List<EntryModel>> getSavedEntries() async {
     return await createDataBase().then((dao) => dao.getAllEntries());
   }
 
   @override
-  Future<void> saveEntry({required Entry entry}) async {
+  Future<void> saveEntry({required EntryModel entry}) async {
     await createDataBase().then((dao) => dao.addEntry(entry));
   }
 }

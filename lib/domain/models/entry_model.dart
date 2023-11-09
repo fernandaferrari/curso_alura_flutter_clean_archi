@@ -3,7 +3,7 @@ import 'dart:convert';
 import 'package:floor/floor.dart';
 
 @entity
-class Entry {
+class EntryModel {
   @primaryKey
   int id;
   String name;
@@ -12,7 +12,7 @@ class Entry {
   String commonLocations;
   String category;
 
-  Entry({
+  EntryModel({
     required this.id,
     required this.name,
     required this.image,
@@ -32,8 +32,8 @@ class Entry {
     };
   }
 
-  factory Entry.fromMap(Map<String, dynamic> map) {
-    return Entry(
+  factory EntryModel.fromMap(Map<String, dynamic> map) {
+    return EntryModel(
       id: map['id']?.toInt() ?? 0,
       name: map['name'] ?? '',
       image: map['image'] ?? '',
@@ -52,5 +52,6 @@ class Entry {
 
   String toJson() => json.encode(toMap());
 
-  factory Entry.fromJson(String source) => Entry.fromMap(json.decode(source));
+  factory EntryModel.fromJson(String source) =>
+      EntryModel.fromMap(json.decode(source));
 }

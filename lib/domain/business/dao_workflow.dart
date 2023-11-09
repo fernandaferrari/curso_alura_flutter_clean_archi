@@ -1,9 +1,9 @@
-import 'package:hyrule/domain/models/entry.dart';
+import 'package:hyrule/domain/models/entry_model.dart';
 
 abstract class DaoWorkFlow {
-  Future<List<Entry>> getSavedEntries();
+  Future<List<EntryModel>> getSavedEntries();
 
-  Future<void> saveEntry({required Entry entry});
+  Future<void> saveEntry({required EntryModel entry});
 
-  Future<void> deleteEntry({required Entry entry});
+  Future<void> deleteEntry({required EntryModel entry});
 }
